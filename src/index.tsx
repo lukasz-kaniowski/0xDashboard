@@ -1,14 +1,21 @@
 import { ColorModeScript } from "@chakra-ui/react"
+import {ChainId, Config, DAppProvider} from "@usedapp/core"
 import * as React from "react"
 import ReactDOM from "react-dom"
 import { App } from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
 
+const config: Config = {
+    supportedChains: [ChainId.Avalanche]
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <ColorModeScript />
-    <App />
+      <DAppProvider config={config}>
+        <App />
+      </DAppProvider>
   </React.StrictMode>,
   document.getElementById("root"),
 )
